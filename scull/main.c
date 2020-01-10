@@ -621,6 +621,9 @@ int scull_init_module(void)
  * Get a range of minor numbers to work with, asking for a dynamic
  * major unless directed otherwise at load time.
  */
+/* 申请一个主设备号，这个主设备号用于创建4个设备。也就是scull0,1,2,3。只是次设备号不一样。 每一个设备都有结构体scull_dev表示。
+ * 每一个设备都有自己的内存空间
+ */
 	if (scull_major) {
 		dev = MKDEV(scull_major, scull_minor);
 		result = register_chrdev_region(dev, scull_nr_devs, "scull");
